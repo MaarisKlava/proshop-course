@@ -1,0 +1,9 @@
+echo -rm > index.js
+echo -n > index.js
+for f in *.jsx; do
+if  [ $f != "index.js" ]; then
+  echo "export { default as ${f%.*} } from './${f%.*}'" >> index.js
+  fi
+done
+echo -mkdir > hoho
+

@@ -1,0 +1,35 @@
+# Navigate to client/src/components directory
+cd client/src/components
+
+# Remove the existing index.js file
+rm index.js
+
+# Create a new, empty index.js file
+echo -n > index.js
+
+# Loop over all .jsx files in the current directory
+for f in *.jsx; do
+  # If the current file is not index.js
+  if  [ $f != "index.js" ]; then
+    # Append a line to index.js that re-exports the default export from the current file
+    echo "export { default as ${f%.*} } from './${f%.*}'" >> index.js
+  fi
+done
+
+# Navigate to client/src/pages directory
+cd ../pages
+
+# Remove the existing index.js file
+rm index.js
+
+# Create a new, empty index.js file
+echo -n > index.js
+
+# Loop over all .jsx files in the current directory
+for f in *.jsx; do
+  # If the current file is not index.js
+  if  [ $f != "index.js" ]; then
+    # Append a line to index.js that re-exports the default export from the current file
+    echo "export { default as ${f%.*} } from './${f%.*}'" >> index.js
+  fi
+done
